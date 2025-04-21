@@ -17,18 +17,17 @@ train_label = np.squeeze(mat1.get("Y")) # label
 test_input = mat2.get("X") # testing data
 test_label = np.squeeze(mat2.get("Y")) # label
 
-# Set dimensions as (Event, sensor, time)
+# Set dimensions as (incident, sensor, time)
 train_input=train_input.transpose(2, 1, 0)
 test_input=test_input.transpose(2, 1, 0)
 
 # Get sizes
-num_event = np.size(train_input,0)
 num_sensor = np.size(train_input,1)
 num_sample = np.size(train_input,2)
 num_eventtype = train_label[-1]
 
 #%% Feature extraction: PCA
-# Transform each sensor's data in each event to k PCs
+# Transform each sensor's data in each incident to k PCs -> (incident, sensor, PC)
 k = 3
 num_train = np.size(train_input,0)
 train_feature=np.zeros((num_train,num_sensor,k))
@@ -163,4 +162,3 @@ while running: # For each stage
         print("Used sensors: ",end="")
         for s in selectedsensors:
             print(s,end=" ")
-
