@@ -163,5 +163,4 @@ while running: # For each stage
         print("Used sensors: ",end="")
         for s in selectedsensors:
             print(s,end=" ")
-        print(" ")
 
